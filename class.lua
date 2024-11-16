@@ -1,3 +1,11 @@
+--[[
+	This function creates a proxy to the instance and return this. Of course, 
+the instance is acessed using a proxy, and this allows the use of private attributes and
+methods
+
+	Verify function is used to allow methods access the instance itself
+]]
+
 local function proxyInstance(self, Class)
 
 	local function verify(tab, key)
@@ -49,6 +57,10 @@ local function proxyInstance(self, Class)
 	return proxy
 end
 
+--[[
+	This function modify the newindex of anyone class, specially the "new" method, to allow
+the inheritance and generate a proxied instance.
+]]
 
 local newIndex = function (class, parent)
 
@@ -101,6 +113,9 @@ local newIndex = function (class, parent)
 end
 
 
+--[[
+	This function creates the class.
+]]
 Class = function (parent)
    
     local newClass = {}
