@@ -6,6 +6,42 @@ At the moment, there is only a single property common to all classes: the `new` 
 
 **Note**: This project is currently in the introductory phase.
 
+## Use example
+
+```lua
+require 'class' --require the class module
+
+local Animal = Class() --create a new class
+
+function Animal:new(type) --create the constructor method
+
+  self._type = type
+
+  self:Say("oi")
+
+  return self
+end
+
+function Animal:Say(value) --create a new class method
+    print(self._type, value)
+end
+
+local Dog = Class(Animal)
+
+function Dog:new()
+
+  self:super().new(self, "dog") --this line is a example of super use for access the parent class methods.
+
+  return self
+end
+
+local dog = Dog:new()
+
+dog:Say("ola")
+
+print(dog._type) --it is a private attribute. An error will be raised.
+```
+
 ## Contributing
 
 <ol>

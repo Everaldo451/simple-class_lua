@@ -11,7 +11,7 @@ local function proxyInstance(self, Class)
 	local function verify(tab, key)
 
 		if type(tab[key]) == "function" then
-			print("é function")
+			--print("é function")
 			
 			local instance = self
 			
@@ -29,13 +29,13 @@ local function proxyInstance(self, Class)
 
 		assert(string.sub(k, 1, 1) ~= "_", "Error: private Value")
 
-		print("é publico")
+		--print("é publico")
 
 		if self[k] then
-			print("Tem em Instance")
+			--print("Tem em Instance")
 			return verify(self, k)
 		elseif Class[k] then
-			print("Tem em Class")
+			--print("Tem em Class")
 			return verify(Class, k)
 		else return nil
 		end
